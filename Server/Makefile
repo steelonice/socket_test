@@ -1,5 +1,7 @@
-CXXFLAGS = -g -Wall -Werror -std=c++11
-LDLIBS =
+LDLIBS = -lqt
+INCLUDEDIRS = -I$(QTDIR)/include
+CXXFLAGS = -g -Wall -Werror -std=c++11 $(INCLUDEDIRS)
+
 
 PRGM  = project
 SRCS := $(wildcard *.cpp)
