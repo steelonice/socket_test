@@ -1,4 +1,4 @@
-LDLIBS = -lqt
+LDLIBS = -lpthread
 INCLUDEDIRS = -I$(QTDIR)/include
 CXXFLAGS = -g -Wall -Werror -std=c++11 $(INCLUDEDIRS)
 
