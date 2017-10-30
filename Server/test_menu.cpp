@@ -7,6 +7,7 @@
 
 #include "test_menu.h"
 #include <iostream>
+#include <algorithm>
 
 menu_manager::menu_manager(test_menu * main_menu)
 {
@@ -40,9 +41,8 @@ void menu_manager::service_menu()
 			case OUTPUT_TEXT:
 				menu_output_text();
 				break;
-			case SERVICE_MENU:
-				break;
-			case SERVICE_FUNC:
+			case HANDLE_CHOICE:
+				menu_handle_choice();
 				break;
 			default:
 				break;
@@ -61,11 +61,42 @@ void menu_manager::menu_output_text( void )
 	}
 	_state = GET_INPUT;
 }
+
+
 void menu_manager::menu_input_text( void )
 {
 	std::string input;
-	std::cout << "Please select an option";
+	std::cout << "Please select an option: ";
 	std::cin  >> input;
+	_captured_input = input.at(0);
+	_state = HANDLE_CHOICE;
+}
+
+void menu_manager::menu_handle_choice( void )
+{
+	uint8_t loop = 0;
+	bool	serviced = false;
+
+	for(loop = 0; loop < _system_menus.at(_current_menu)->num_options; loop++)
+	{
+		if(_captured_input == _system_menus.at(_current_menu)->items[loop].select_key)
+		{
+			if(_system_menus.at(_current_menu)->items[loop].menu_function != NULL)
+			{
+				_system_menus.at(_current_menu)->items[loop].menu_function(_system_menus.at(_current_menu)->items[loop].argument);
+				serviced = true;
+			}
+			else if(_system_menus.at(_current_menu)->items[loop].next_test_menu != NULL)
+			{
+				_current_menu = std::find(_system_menus.begin(), _system_menus.end(), _system_menus.at(_current_menu)->items[loop].next_test_menu) - _system_menus.begin();
+				serviced = true;
+			}
+		}
+	}
+	if(serviced == false)
+	{
+		std::cout << "Sorry, Invalid Option\n";
+	}
 	_state = OUTPUT_TEXT;
 }
 

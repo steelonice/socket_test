@@ -14,10 +14,13 @@
 #include <iterator>
 #include <thread>
 
+struct test_menu_item;
+struct test_menu;
+
 typedef struct test_menu_item{
 	char				select_key;
 	std::string			menu_text;
-	test_menu_item * 	next_test_menu;
+	test_menu 	* 		next_test_menu;
 	void 				(* menu_function)(uint8_t);
 	uint8_t				argument;
 }test_menu_item;
@@ -31,8 +34,7 @@ typedef struct test_menu{
 typedef enum{
 	GET_INPUT,
 	OUTPUT_TEXT,
-	SERVICE_MENU,
-	SERVICE_FUNC,
+	HANDLE_CHOICE,
 }menu_state;
 
 class menu_manager{
@@ -50,10 +52,13 @@ class menu_manager{
 		std::vector<test_menu *> _system_menus;
 		uint8_t					 _current_menu;
 		uint8_t					 _main_menu;
+		char					 _captured_input;
 
 
 		void menu_output_text( void );
 		void menu_input_text( void );
+		void menu_handle_choice( void );
+
 };
 
 #endif /* TEST_MENU_H_ */
