@@ -10,6 +10,8 @@ SRC      :=                      \
 	$(wildcard src/*.cpp)         \
 	$(wildcard src/test_menu/*.cpp)         \
 	$(wildcard src/hc_socket/*.cpp)         \
+	$(wildcard src/hc_server/*.cpp)         \
+	$(wildcard src/hc_client/*.cpp)         \
 
 OBJECTS := $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
