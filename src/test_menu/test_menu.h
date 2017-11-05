@@ -2,7 +2,10 @@
  * test_menu.h
  *
  *  Created on: Oct 29, 2017
- *      Author: hayden
+ *      Author: Hayden Chuter
+ *
+ *      \notes
+ *
  */
 
 #ifndef TEST_MENU_H_

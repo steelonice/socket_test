@@ -2,7 +2,10 @@
  * text_menu.cpp
  *
  *  Created on: Oct 29, 2017
- *      Author: hayden
+ *      Author: Hayden Chuter
+ *
+ *      \notes
+ *
  */
 
 #include "test_menu.h"
