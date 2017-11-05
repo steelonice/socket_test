@@ -10,7 +10,8 @@
 
 #include <stdint.h>
 #include <string>
-#include "test_menu.h"
+
+#include "test_menu/test_menu.h"
 
 #define DEFAULT_ARG 0
 
