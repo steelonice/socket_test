@@ -80,6 +80,7 @@ void menu_manager::menu_handle_choice( void )
 	uint8_t loop = 0;
 	bool	serviced = false;
 
+	/* Loop through all the system menus */
 	for(loop = 0; loop < _system_menus.at(_current_menu)->num_options; loop++)
 	{
 		if(_captured_input == _system_menus.at(_current_menu)->items[loop].select_key)

@@ -11,14 +11,13 @@
 #ifndef HC_CLIENT_MENU_H_
 #define HC_CLIENT_MENU_H_
 
-#include "main_menu.h"
-#include "test_menu/test_menu.h"
+#include "../test_menu/test_menu.h"
 #include "hc_client.h"
 
 test_menu_item client_menu_items[] =
 {
-	{'\0', "Start", NULL, hc_client_dummy, DEFAULT_ARG},
-	{'\0', "Stop", NULL, hc_client_dummy, DEFAULT_ARG},
+	{'\0', "Start", NULL, hc_client_dummy, 0},
+	{'\0', "Stop", NULL, hc_client_dummy, 0},
 };
 
 test_menu client_menu =

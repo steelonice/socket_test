@@ -17,10 +17,8 @@
 #include <thread>
 
 #include "main.h"
+#include "main_menu.h"
 #include "test_menu/test_menu.h"
-#include "hc_client/hc_client.h"
-#include "hc_server/hc_server.h"
-#include "hc_socket/hc_socket.h"
 
 bool _is_running = true;
 
@@ -36,10 +34,11 @@ void main_start_client()
 
 int main(int argc, char *argv[])
 {
-#if 0
+
 	menu_manager my_menu_manager(&main_menu);
-	my_menu_manager.add_menu(&main_2_menu);
+	my_menu_manager.add_menu(&client_menu);
+	my_menu_manager.add_menu(&server_menu);
+
 	my_menu_manager.menu_thread.join();
-#endif
      return 0;
 }
